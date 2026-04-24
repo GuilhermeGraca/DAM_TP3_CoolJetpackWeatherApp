@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cool Jetpack Weather APP</string>
+    <string name="label_temperature">TEMPERATURA</string>
+    <string name="label_longitude">LONGITUDE</string>
+    <string name="label_pressure">PRESSÃO</string>
+    <string name="label_wind_dir">DIR. VENTO</string>
+    <string name="btn_update_weather">UPDATE</string>
+    <string name="label_windspeed">VEL.VENTO</string>
+    <string name="label_latitude">LATITUDE</string>
+</resources>
