@@ -1,6 +1,8 @@
 package dam_A51827.cooljetpackweatherapp.ui
 
 import android.content.res.Configuration
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -9,7 +11,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dam_A51827.cooljetpackweatherapp.data.WMO_WeatherCode
 import dam_A51827.cooljetpackweatherapp.data.getWeatherCodeMap
+import dam_A51827.cooljetpackweatherapp.viewmodel.WeatherViewModel
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun WeatherUI(weatherViewModel: WeatherViewModel = viewModel()) {
     val weatherUIState by weatherViewModel.uiState.collectAsState()
