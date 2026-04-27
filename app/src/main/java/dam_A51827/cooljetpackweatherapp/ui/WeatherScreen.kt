@@ -14,8 +14,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -146,7 +148,7 @@ fun PortraitWeatherUI(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(32.dp),
+                .padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 80.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -192,7 +194,7 @@ fun LandscapeWeatherUI(
         Row(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(32.dp),
+                .padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 64.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
@@ -232,7 +234,14 @@ fun MainWeatherInfo(wIcon: Int, temperature: Float, windSpeed: Float) {
             text = "${temperature}ºC",
             color = nightPrimaryText,
             fontSize = 64.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            style = TextStyle(
+                shadow = Shadow(
+                    color = Color.Black.copy(alpha = 0.5f),
+                    offset = Offset(4f, 4f),
+                    blurRadius = 8f
+                )
+            )
         )
         Text(
             text = "TEMPERATURE",
@@ -284,107 +293,119 @@ fun DetailsCard(
     Card(
         colors = CardDefaults.cardColors(containerColor = nightExternalCardBg),
         border = BorderStroke(1.dp, nightExternalCardBorder),
-        shape = RoundedCornerShape(16.dp),
+        shape = RoundedCornerShape(24.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
             modifier = Modifier.padding(24.dp)
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+            // Caixa interior sólida
+            Card(
+                colors = CardDefaults.cardColors(containerColor = nightInternalCardBg),
+                shape = RoundedCornerShape(16.dp),
+                modifier = Modifier.fillMaxWidth()
             ) {
-                // Zona de input da Latitude
-                Column(modifier = Modifier.weight(1f)) {
-                    Text("LATITUDE", color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
-                    TextField(
-                        value = latText,
-                        onValueChange = { latText = it },
-                        textStyle = TextStyle(color = nightPrimaryText, fontSize = 16.sp, fontWeight = FontWeight.Bold),
-                        colors = TextFieldDefaults.colors(
-                            focusedContainerColor = Color.Transparent,
-                            unfocusedContainerColor = Color.Transparent,
-                            focusedIndicatorColor = nightSecondaryLabel,
-                            unfocusedIndicatorColor = nightSecondaryLabel,
-                            cursorColor = nightPrimaryText
-                        ),
-                        singleLine = true,
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                }
-                Spacer(modifier = Modifier.width(16.dp))
-                // Zona de input da Longitude
-                Column(modifier = Modifier.weight(1f)) {
-                    Text("LONGITUDE", color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
-                    TextField(
-                        value = lonText,
-                        onValueChange = { lonText = it },
-                        textStyle = TextStyle(color = nightPrimaryText, fontSize = 16.sp, fontWeight = FontWeight.Bold),
-                        colors = TextFieldDefaults.colors(
-                            focusedContainerColor = Color.Transparent,
-                            unfocusedContainerColor = Color.Transparent,
-                            focusedIndicatorColor = nightSecondaryLabel,
-                            unfocusedIndicatorColor = nightSecondaryLabel,
-                            cursorColor = nightPrimaryText
-                        ),
-                        singleLine = true,
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        modifier = Modifier.fillMaxWidth()
-                    )
+                Column(
+                    modifier = Modifier.padding(24.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        // Zona de input da Latitude
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text("LATITUDE", color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                            TextField(
+                                value = latText,
+                                onValueChange = { latText = it },
+                                textStyle = TextStyle(color = nightPrimaryText, fontSize = 16.sp, fontWeight = FontWeight.Bold),
+                                colors = TextFieldDefaults.colors(
+                                    focusedContainerColor = Color.Transparent,
+                                    unfocusedContainerColor = Color.Transparent,
+                                    focusedIndicatorColor = nightSecondaryLabel,
+                                    unfocusedIndicatorColor = nightSecondaryLabel,
+                                    cursorColor = nightPrimaryText
+                                ),
+                                singleLine = true,
+                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(16.dp))
+                        // Zona de input da Longitude
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text("LONGITUDE", color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                            TextField(
+                                value = lonText,
+                                onValueChange = { lonText = it },
+                                textStyle = TextStyle(color = nightPrimaryText, fontSize = 16.sp, fontWeight = FontWeight.Bold),
+                                colors = TextFieldDefaults.colors(
+                                    focusedContainerColor = Color.Transparent,
+                                    unfocusedContainerColor = Color.Transparent,
+                                    focusedIndicatorColor = nightSecondaryLabel,
+                                    unfocusedIndicatorColor = nightSecondaryLabel,
+                                    cursorColor = nightPrimaryText
+                                ),
+                                singleLine = true,
+                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(24.dp))
+        
+                    // Zona da Pressão e Direção do Vento
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Column {
+                            Text("PRESSURE", color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                            Text("$seaLevelPressure hPa", color = nightPrimaryText, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                        }
+                        Column(horizontalAlignment = Alignment.End) {
+                            Text("WIND DIR.", color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                            Text("${windDirection}º", color = nightPrimaryText, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
+                    // Linha separadora horizontal hr
+                    Spacer(modifier = Modifier.height(16.dp))
+                    HorizontalDivider(color = nightSecondaryLabel.copy(alpha = 0.5f), thickness = 1.dp)
+                    Spacer(modifier = Modifier.height(16.dp))
+        
+                    // Zona da Hora
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.clock_regular_full_icon),
+                            contentDescription = "Clock",
+                            tint = nightSecondaryLabel,
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(time, color = nightSecondaryLabel, fontSize = 14.sp)
+                    }
                 }
             }
+            
             Spacer(modifier = Modifier.height(24.dp))
-
-            // Zona da Pressão e Direção do Vento
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+        
+            // Botão de Atualizar dentro do card transparente
+            Button(
+                onClick = { 
+                    onLatitudeChange(latText)
+                    onLongitudeChange(lonText)
+                    onUpdateButtonClick() 
+                },
+                modifier = Modifier.fillMaxWidth().height(50.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = nightButtonBg),
+                shape = RoundedCornerShape(8.dp)
             ) {
-                Column {
-                    Text("PRESSURE", color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
-                    Text("$seaLevelPressure hPa", color = nightPrimaryText, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                }
-                Column(horizontalAlignment = Alignment.End) {
-                    Text("WIND DIR.", color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
-                    Text("${windDirection}º", color = nightPrimaryText, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                }
-            }
-            // Linha separadora horizontal hr
-            Spacer(modifier = Modifier.height(16.dp))
-            HorizontalDivider(color = nightSecondaryLabel.copy(alpha = 0.5f), thickness = 1.dp)
-            Spacer(modifier = Modifier.height(16.dp))
-
-            // Zona da Hora
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.clock_regular_full_icon),
-                    contentDescription = "Clock",
-                    tint = nightSecondaryLabel,
-                    modifier = Modifier.size(16.dp)
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(time, color = nightSecondaryLabel, fontSize = 14.sp)
+                Text("UPDATE WEATHER", color = nightPrimaryText, fontWeight = FontWeight.Bold)
             }
         }
-    }
-    Spacer(modifier = Modifier.height(16.dp))
-
-    // Botão de Atualizar
-    Button(
-        onClick = { 
-            onLatitudeChange(latText)
-            onLongitudeChange(lonText)
-            onUpdateButtonClick() 
-        },
-        modifier = Modifier.fillMaxWidth().height(50.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = nightButtonBg),
-        shape = RoundedCornerShape(8.dp)
-    ) {
-        Text("UPDATE WEATHER", color = nightPrimaryText, fontWeight = FontWeight.Bold)
     }
 }
