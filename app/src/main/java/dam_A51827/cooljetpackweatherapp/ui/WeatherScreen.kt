@@ -195,13 +195,15 @@ fun LandscapeWeatherUI(
         Row(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(32.dp),
+                .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            MainWeatherInfo(wIcon, temperature, windSpeed)
+            Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
+                MainWeatherInfo(wIcon, temperature, windSpeed)
+            }
 
-            Box(modifier = Modifier.weight(1f).padding(start = 32.dp)) {
+            Box(modifier = Modifier.weight(1f).padding(horizontal = 16.dp)) {
                 Column(verticalArrangement = Arrangement.Center) {
                     DetailsCard(
                         latitude = latitude,
@@ -221,13 +223,16 @@ fun LandscapeWeatherUI(
 
 @Composable
 fun MainWeatherInfo(wIcon: Int, temperature: Float, windSpeed: Float) {
-    // Zona superior, com o ícone do clima, a temperatura e o vento
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+    val iconSize = if (isLandscape) 140.dp else 240.dp
+
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         if (wIcon != 0) {
             Image(
                 painter = painterResource(id = wIcon),
                 contentDescription = "Weather Icon",
-                modifier = Modifier.size(240.dp)
+                modifier = Modifier.size(iconSize)
             )
         }
 
@@ -298,7 +303,7 @@ fun DetailsCard(
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
-            modifier = Modifier.padding(24.dp)
+            modifier = Modifier.padding(16.dp)
         ) {
             // Caixa interior sólida
             Card(
@@ -307,7 +312,7 @@ fun DetailsCard(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(
-                    modifier = Modifier.padding(24.dp)
+                    modifier = Modifier.padding(16.dp)
                 ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -353,7 +358,7 @@ fun DetailsCard(
                             )
                         }
                     }
-                    Spacer(modifier = Modifier.height(24.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
         
                     // Zona da Pressão e Direção do Vento
                     Row(
@@ -370,9 +375,9 @@ fun DetailsCard(
                         }
                     }
                     // Linha separadora horizontal hr
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
                     HorizontalDivider(color = nightSecondaryLabel.copy(alpha = 0.5f), thickness = 1.dp)
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
         
                     // Zona da Hora
                     Row(
@@ -392,8 +397,7 @@ fun DetailsCard(
                 }
             }
             
-            Spacer(modifier = Modifier.height(24.dp))
-        
+            Spacer(modifier = Modifier.height(16.dp))
             // Botão de Atualizar dentro do card transparente
             Button(
                 onClick = { 
