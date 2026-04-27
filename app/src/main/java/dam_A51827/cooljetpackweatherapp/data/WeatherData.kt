@@ -2,6 +2,8 @@ package dam_A51827.cooljetpackweatherapp.data
 
 import kotlin.collections.forEach
 
+//Notação
+@Serializable
 data class WeatherData (
     var latitude : String ,
     var longitude : String ,
@@ -9,6 +11,7 @@ data class WeatherData (
     var current_weather : CurrentWeather ,
     var hourly : Hourly
 )
+
 data class CurrentWeather (
     var temperature : Float ,
     var windspeed : Float ,
