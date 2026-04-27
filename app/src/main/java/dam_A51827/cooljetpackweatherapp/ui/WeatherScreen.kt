@@ -134,16 +134,14 @@ fun PortraitWeatherUI(
     onUpdateButtonClick: () -> Unit
 ) {
     //TODO
-    // Fundo principal com Gradiente Escuro
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(Color(0xFF4A5D73), Color(0xFF1E2836))
-                )
-            )
-    ) {
+    // Fundo principal com Imagem (Portrait)
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(id = R.drawable.coolweatherapp_bg_img_upscaled),
+            contentDescription = "Background",
+            contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
         // Layout principal em Coluna/Vertical
         Column(
             modifier = Modifier
@@ -183,16 +181,14 @@ fun LandscapeWeatherUI(
     onLongitudeChange: (String) -> Unit,
     onUpdateButtonClick: () -> Unit
 ) {
-    //TODO
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(Color(0xFF4A5D73), Color(0xFF1E2836))
-                )
-            )
-    ) {
+    // Fundo principal com Imagem (Landscape)
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(id = R.drawable.coolweatherapp_bg_landscape),
+            contentDescription = "Background",
+            contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
         Row(
             modifier = Modifier
                 .fillMaxSize()
