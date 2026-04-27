@@ -317,6 +317,7 @@ fun DetailsCard(
                 ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         // Zona de input da Latitude
@@ -338,7 +339,7 @@ fun DetailsCard(
                                 modifier = Modifier.fillMaxWidth()
                             )
                         }
-                        Spacer(modifier = Modifier.width(16.dp))
+                        Spacer(modifier = Modifier.width(8.dp))
                         // Zona de input da Longitude
                         Column(modifier = Modifier.weight(1f)) {
                             Text(stringResource(id = R.string.label_longitude), color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
@@ -356,6 +357,18 @@ fun DetailsCard(
                                 singleLine = true,
                                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                                 modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+                        
+                        // Botão do Location Picker
+                        IconButton(
+                            onClick = { /* ligação para a activity */ }
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.earth_americas_solid_full),
+                                contentDescription = "Location Picker",
+                                tint = nightSecondaryLabel,
+                                modifier = Modifier.size(24.dp)
                             )
                         }
                     }
