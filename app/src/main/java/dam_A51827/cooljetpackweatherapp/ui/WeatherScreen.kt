@@ -55,17 +55,16 @@ fun WeatherUI(weatherViewModel: WeatherViewModel = viewModel()) {
     val time = weatherUIState.time
     
     val configuration = LocalConfiguration.current
-    val day = true // Must change this in the future
+    // Se não tiver PM no texto, é dia
+    val day = !time.contains("PM", ignoreCase = true)
     
     val mapt = getWeatherCodeMap()
     val wCode = mapt.get(weathercode)
     
     val wImage = when (wCode) {
-        WMO_WeatherCode.CLEAR_SKY,
-        WMO_WeatherCode.MAINLY_CLEAR,
-        WMO_WeatherCode.PARTLY_CLOUDY -> {
-            if (day) wCode?.image + "day" else wCode?.image + "night"
-        }
+        WMO_WeatherCode.CLEAR_SKY -> if (day) "day" else "night"
+        WMO_WeatherCode.MAINLY_CLEAR -> if (day) "cloudy_day_1" else "cloudy_night_1"
+        WMO_WeatherCode.PARTLY_CLOUDY -> if (day) "cloudy_day_2" else "cloudy_night_2"
         else -> wCode?.image
     }
     
@@ -227,7 +226,7 @@ fun MainWeatherInfo(wIcon: Int, temperature: Float, windSpeed: Float) {
             Image(
                 painter = painterResource(id = wIcon),
                 contentDescription = "Weather Icon",
-                modifier = Modifier.size(120.dp)
+                modifier = Modifier.size(240.dp)
             )
         }
 
