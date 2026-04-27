@@ -1,6 +1,7 @@
 package dam_A51827.cooljetpackweatherapp.data
 
 import kotlin.collections.forEach
+import kotlinx.serialization.Serializable
 
 //Notação
 @Serializable
@@ -12,6 +13,7 @@ data class WeatherData (
     var hourly : Hourly
 )
 
+@Serializable
 data class CurrentWeather (
     var temperature : Float ,
     var windspeed : Float ,
@@ -20,11 +22,13 @@ data class CurrentWeather (
     var time : String
 )
 
+@Serializable
 data class Hourly (
     var time : ArrayList<String>,
     var temperature_2m : ArrayList<Float>,
     var weathercode : ArrayList<Int>,
-    var pressure_msl : ArrayList<Double>
+    var pressure_msl : ArrayList<Double>,
+    var windspeed_10m : ArrayList<Float>
 )
 enum class WMO_WeatherCode(var code: Int, var image: String) {
     CLEAR_SKY(0, "day"),
