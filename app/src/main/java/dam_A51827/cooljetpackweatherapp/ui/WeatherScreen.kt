@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -250,7 +251,7 @@ fun MainWeatherInfo(wIcon: Int, temperature: Float, windSpeed: Float) {
             )
         )
         Text(
-            text = "TEMPERATURE",
+            text = stringResource(id = R.string.label_temperature),
             color = nightSecondaryLabel,
             fontSize = 12.sp,
             fontWeight = FontWeight.Bold
@@ -266,14 +267,14 @@ fun MainWeatherInfo(wIcon: Int, temperature: Float, windSpeed: Float) {
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = " km/h",
+                text = " " + stringResource(id = R.string.label_wind_speed_metric),
                 color = nightAccentValue,
                 fontSize = 16.sp,
                 modifier = Modifier.padding(bottom = 4.dp)
             )
         }
         Text(
-            text = "WINDSPEED",
+            text = stringResource(id = R.string.label_windspeed),
             color = nightSecondaryLabel,
             fontSize = 12.sp,
             fontWeight = FontWeight.Bold
@@ -320,7 +321,7 @@ fun DetailsCard(
                     ) {
                         // Zona de input da Latitude
                         Column(modifier = Modifier.weight(1f)) {
-                            Text("LATITUDE", color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                            Text(stringResource(id = R.string.label_latitude), color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
                             TextField(
                                 value = latText,
                                 onValueChange = { latText = it },
@@ -340,7 +341,7 @@ fun DetailsCard(
                         Spacer(modifier = Modifier.width(16.dp))
                         // Zona de input da Longitude
                         Column(modifier = Modifier.weight(1f)) {
-                            Text("LONGITUDE", color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                            Text(stringResource(id = R.string.label_longitude), color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
                             TextField(
                                 value = lonText,
                                 onValueChange = { lonText = it },
@@ -366,11 +367,11 @@ fun DetailsCard(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Column {
-                            Text("PRESSURE", color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                            Text(stringResource(id = R.string.label_pressure), color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
                             Text("$seaLevelPressure hPa", color = nightPrimaryText, fontSize = 16.sp, fontWeight = FontWeight.Bold)
                         }
                         Column(horizontalAlignment = Alignment.End) {
-                            Text("WIND DIR.", color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                            Text(stringResource(id = R.string.label_wind_dir), color = nightSecondaryLabel, fontSize = 10.sp, fontWeight = FontWeight.Bold)
                             Text("${windDirection}º", color = nightPrimaryText, fontSize = 16.sp, fontWeight = FontWeight.Bold)
                         }
                     }
@@ -409,7 +410,7 @@ fun DetailsCard(
                 colors = ButtonDefaults.buttonColors(containerColor = nightButtonBg),
                 shape = RoundedCornerShape(8.dp)
             ) {
-                Text("UPDATE WEATHER", color = nightPrimaryText, fontWeight = FontWeight.Bold)
+                Text(stringResource(id = R.string.btn_update_weather), color = nightPrimaryText, fontWeight = FontWeight.Bold)
             }
         }
     }
