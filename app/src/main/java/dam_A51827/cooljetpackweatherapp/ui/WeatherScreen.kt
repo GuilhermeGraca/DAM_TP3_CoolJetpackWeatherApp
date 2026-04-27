@@ -148,7 +148,8 @@ fun PortraitWeatherUI(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 80.dp),
+                .padding(32.dp)
+                .offset(y = (-24).dp), // Puxa tudo  para cima
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -194,7 +195,7 @@ fun LandscapeWeatherUI(
         Row(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 64.dp),
+                .padding(32.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
