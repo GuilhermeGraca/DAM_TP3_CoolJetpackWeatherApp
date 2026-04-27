@@ -55,8 +55,10 @@ fun WeatherUI(weatherViewModel: WeatherViewModel = viewModel()) {
     val time = weatherUIState.time
     
     val configuration = LocalConfiguration.current
-    // Se não tiver PM no texto, é dia
-    val day = !time.contains("PM", ignoreCase = true)
+    //hora está depois do T e antes do : - se for null mete 12
+    val hour = time.substringAfter("T").substringBefore(":").toIntOrNull() ?: 12
+    // É dia antes das 19h e dps das 6
+    val day = hour in 6..18
     
     val mapt = getWeatherCodeMap()
     val wCode = mapt.get(weathercode)
