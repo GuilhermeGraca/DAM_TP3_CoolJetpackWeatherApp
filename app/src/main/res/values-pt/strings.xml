@@ -8,4 +8,17 @@
     <string name="btn_update_weather">UPDATE</string>
     <string name="label_windspeed">VEL.VENTO</string>
     <string name="label_latitude">LATITUDE</string>
+    
+    <!-- Favorites & Location Picker Strings -->
+    <string name="cd_save_favorite">Guardar Favorito</string>
+    <string name="dialog_title_favorites">Locais Favoritos</string>
+    <string name="label_save_location">Guardar Localização Atual:</string>
+    <string name="label_location_name">Nome do Local</string>
+    <string name="label_saved_locations">Os Teus Locais Guardados:</string>
+    <string name="fallback_unknown">Desconhecido</string>
+    <string name="btn_save">Guardar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="cd_location_picker">Selecionar Localização</string>
+    <string name="marker_selected_location">Localização Selecionada</string>
+    <string name="btn_confirm_location">Confirmar Localização</string>
 </resources>

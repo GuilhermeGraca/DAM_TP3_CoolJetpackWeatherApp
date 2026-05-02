@@ -8,4 +8,17 @@
     <string name="label_longitude">LONGITUDE</string>
     <string name="label_pressure">PRESSURE</string>
     <string name="label_wind_dir">WIND DIR.</string>
+    
+    <!-- Favorites & Location Picker Strings -->
+    <string name="cd_save_favorite">Save Favorite</string>
+    <string name="dialog_title_favorites">Favorite Locations</string>
+    <string name="label_save_location">Save Current Location:</string>
+    <string name="label_location_name">Location Name</string>
+    <string name="label_saved_locations">Your Saved Locations:</string>
+    <string name="fallback_unknown">Unknown</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="cd_location_picker">Location Picker</string>
+    <string name="marker_selected_location">Selected Location</string>
+    <string name="btn_confirm_location">Confirm Location</string>
 </resources>

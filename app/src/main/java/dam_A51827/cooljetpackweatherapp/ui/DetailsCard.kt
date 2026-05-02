@@ -200,7 +200,7 @@ fun DetailsCard(
                         ) {
                             Icon(
                                 painter = painterResource(id = R.drawable.earth_americas_solid_full),
-                                contentDescription = "Location Picker",
+                                contentDescription = stringResource(id = R.string.cd_location_picker),
                                 tint = nightSecondaryLabel,
                                 modifier = Modifier.size(24.dp)
                             )
@@ -271,7 +271,7 @@ fun DetailsCard(
                     onClick = { showDialog = true },
                     modifier = Modifier.size(50.dp).background(nightExternalCardBorder, RoundedCornerShape(8.dp))
                 ) {
-                    Icon(Icons.Default.Star, contentDescription = "Save Favorite", tint = nightAccentValue)
+                    Icon(Icons.Default.Star, contentDescription = stringResource(id = R.string.cd_save_favorite), tint = nightAccentValue)
                 }
             }
         }
@@ -280,15 +280,15 @@ fun DetailsCard(
     if (showDialog) {
         AlertDialog(
             onDismissRequest = { showDialog = false },
-            title = { Text("Favorite Locations", color = nightPrimaryText) },
+            title = { Text(stringResource(id = R.string.dialog_title_favorites), color = nightPrimaryText) },
             text = {
                 Column {
-                    Text("Save Current Location:", color = nightSecondaryLabel, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                    Text(stringResource(id = R.string.label_save_location), color = nightSecondaryLabel, fontSize = 12.sp, fontWeight = FontWeight.Bold)
                     Spacer(modifier = Modifier.height(8.dp))
                     TextField(
                         value = newFavName,
                         onValueChange = { newFavName = it },
-                        label = { Text("Location Name", color = nightSecondaryLabel) },
+                        label = { Text(stringResource(id = R.string.label_location_name), color = nightSecondaryLabel) },
                         singleLine = true,
                         colors = TextFieldDefaults.colors(
                             focusedContainerColor = nightInternalCardBg,
@@ -300,7 +300,7 @@ fun DetailsCard(
                     
                     if (favorites.isNotEmpty()) {
                         Spacer(modifier = Modifier.height(24.dp))
-                        Text("Your Saved Locations:", color = nightSecondaryLabel, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        Text(stringResource(id = R.string.label_saved_locations), color = nightSecondaryLabel, fontSize = 12.sp, fontWeight = FontWeight.Bold)
                         Spacer(modifier = Modifier.height(8.dp))
                         LazyRow(
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -319,7 +319,8 @@ fun DetailsCard(
                                         showDialog = false
                                     }
                                 ) {
-                                    val displayName = if (fav.name.isBlank()) "Unknown" else fav.name
+                                    val fallbackName = stringResource(id = R.string.fallback_unknown)
+                                    val displayName = if (fav.name.isBlank()) fallbackName else fav.name
                                     Text(
                                         text = displayName,
                                         color = nightPrimaryText,
@@ -345,12 +346,12 @@ fun DetailsCard(
                         showDialog = false
                     }
                 }) {
-                    Text("Save", color = nightAccentValue, fontWeight = FontWeight.Bold)
+                    Text(stringResource(id = R.string.btn_save), color = nightAccentValue, fontWeight = FontWeight.Bold)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showDialog = false }) {
-                    Text("Cancel", color = nightSecondaryLabel)
+                    Text(stringResource(id = R.string.btn_cancel), color = nightSecondaryLabel)
                 }
             }
         )
