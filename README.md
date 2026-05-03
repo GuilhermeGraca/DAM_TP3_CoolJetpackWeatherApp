@@ -37,4 +37,4 @@ Pode-se acrescentar mais previsões do tempo para os dias seguintes. Pode-se tam
 
 ---
 ## 15. AI Usage Disclosure (Mandatory)
-Utilizou-se o NotebookLM com os slides da cadeira. O Nano Banana foi usado para criar o ícone da app. O autocomplete foi utilizado para auxiliar na escrita de código, verificando a sintaxe e sugerindo implementações. O Gemini 3 foi utilizado para auxiliar na redação deste README. Declara-se responsabilidade por todo o conteúdo.
+Utilizou-se o NotebookLM com os slides da cadeira. O Nano Banana foi usado para criar o ícone da app. O autocomplete foi utilizado para auxiliar na escrita de código, verificando a sintaxe e sugerindo implementações. O Gemini 3 foi utilizado para auxiliar na redação deste README e tambem para saber quais a dependencias do gradle eram necessárias implementar. Declara-se responsabilidade por todo o conteúdo.
